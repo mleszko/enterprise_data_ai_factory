@@ -1,0 +1,8 @@
+numpy
+scikit-learn
+pyspark
+apache-beam
+flask
+elasticsearch
+joblib
+pytest

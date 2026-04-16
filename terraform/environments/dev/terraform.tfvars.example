@@ -1,0 +1,5 @@
+project_id              = "your-gcp-project-id"
+gcs_bucket_name         = "retail-sales-anomaly-dev-bucket"
+region                  = "europe-west1"
+pubsub_topic_name       = "retail-sales-events-dev"
+pubsub_subscription_name = "retail-sales-events-dev-sub"

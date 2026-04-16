@@ -43,8 +43,11 @@ def score_sales_series() -> tuple:
     features = transform_sales_series_to_features(values, RollingFeatureConfig())
 
     model = _get_model()
-    preds = model.predict(features)
-    scores = model.decision_function(features)
+    # Senior robustness pattern: normalize model outputs to ndarray boundaries.
+    # Some test doubles or wrapped models can return Python lists, while sklearn
+    # estimators typically return ndarrays. Coercing once avoids fragile code.
+    preds = np.asarray(model.predict(features))
+    scores = np.asarray(model.decision_function(features))
 
     return (
         jsonify(
